@@ -29,11 +29,10 @@ bl SetGpio
 .unreq pinVal
 
 // Wait to flash so humans can see it
-mov r2,#0x3F0000
-wait1$:
-sub r2,#1
-cmp r2,#0
-bne wait1$
+wait .req r0
+mov wait,#1000
+bl Wait
+.unreq wait
 
 // Set the GPIO 47 pin off.
 pinNum .req r0
@@ -45,10 +44,9 @@ bl SetGpio
 .unreq pinVal
 
 // Wait to flash so humans can see it
-mov r2,#0x3F0000
-wait2$:
-sub r2,#1
-cmp r2,#0
-bne wait2$
+wait .req r0
+mov wait,#1000
+bl Wait
+.unreq wait
 
 b loop$

@@ -19,13 +19,13 @@ Wait:
   start .req r3
   mov start,r0
 
-  loop$:
+  loop2$:
     bl GetTimeStamp
     elapsed .req r1
     sub elapsed,r0,start
     cmp elapsed,delay
     .unreq elapsed
-    bls loop$
+    bls loop2$
 
   .unreq delay
   .unreq start

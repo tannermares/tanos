@@ -23,7 +23,7 @@ loop$:
 pinNum .req r0
 pinVal .req r1
 mov pinNum,#16
-mov pinVal,#1
+mov pinVal,#0
 bl SetGpio
 .unreq pinNum
 .unreq pinVal
@@ -39,7 +39,7 @@ bne wait1$
 pinNum .req r0
 pinVal .req r1
 mov pinNum,#16
-mov pinVal,#0
+mov pinVal,#1
 bl SetGpio
 .unreq pinNum
 .unreq pinVal

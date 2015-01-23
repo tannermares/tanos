@@ -52,8 +52,8 @@ SetGpio:
 
   teq pinVal,#0
   .unreq pinVal
-  streq setBit,[gpioAddr,#44]
-  strne setBit,[gpioAddr,#32]
+  streq setBit,[gpioAddr,#40]
+  strne setBit,[gpioAddr,#28]
   .unreq setBit
   .unreq gpioAddr
   pop {pc}

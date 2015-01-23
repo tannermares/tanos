@@ -54,26 +54,24 @@ Disassembly of section .text:
     8088:	e3a00010 	mov	r0, #16
     808c:	e3a01001 	mov	r1, #1
     8090:	ebffffdd 	bl	800c <SetGpioFunction>
-    8094:	e3a01001 	mov	r1, #1
-    8098:	e1a01781 	lsl	r1, r1, #15
 
-0000809c <loop$>:
-    809c:	e3a00010 	mov	r0, #16
-    80a0:	e3a01001 	mov	r1, #1
-    80a4:	ebffffe6 	bl	8044 <SetGpio>
-    80a8:	e3a0283f 	mov	r2, #4128768	; 0x3f0000
+00008094 <loop$>:
+    8094:	e3a00010 	mov	r0, #16
+    8098:	e3a01001 	mov	r1, #1
+    809c:	ebffffe8 	bl	8044 <SetGpio>
+    80a0:	e3a0283f 	mov	r2, #4128768	; 0x3f0000
 
-000080ac <wait1$>:
-    80ac:	e2422001 	sub	r2, r2, #1
-    80b0:	e3520000 	cmp	r2, #0
-    80b4:	1afffffc 	bne	80ac <wait1$>
-    80b8:	e3a00010 	mov	r0, #16
-    80bc:	e3a01000 	mov	r1, #0
-    80c0:	ebffffdf 	bl	8044 <SetGpio>
-    80c4:	e3a0283f 	mov	r2, #4128768	; 0x3f0000
+000080a4 <wait1$>:
+    80a4:	e2422001 	sub	r2, r2, #1
+    80a8:	e3520000 	cmp	r2, #0
+    80ac:	1afffffc 	bne	80a4 <wait1$>
+    80b0:	e3a00010 	mov	r0, #16
+    80b4:	e3a01000 	mov	r1, #0
+    80b8:	ebffffe1 	bl	8044 <SetGpio>
+    80bc:	e3a0283f 	mov	r2, #4128768	; 0x3f0000
 
-000080c8 <wait2$>:
-    80c8:	e2422001 	sub	r2, r2, #1
-    80cc:	e3520000 	cmp	r2, #0
-    80d0:	1afffffc 	bne	80c8 <wait2$>
-    80d4:	eafffff0 	b	809c <loop$>
+000080c0 <wait2$>:
+    80c0:	e2422001 	sub	r2, r2, #1
+    80c4:	e3520000 	cmp	r2, #0
+    80c8:	1afffffc 	bne	80c0 <wait2$>
+    80cc:	eafffff0 	b	8094 <loop$>

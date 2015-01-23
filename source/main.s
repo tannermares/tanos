@@ -2,22 +2,31 @@
 .globl _start
 _start:
 
-// Load the GPIO address into r0.
-ldr r0,=0x20200000
+b main
+
+.section .text
+main:
+mov sp,#0x8000
 
 // Enable output on the GPIO 47 (OK led).
-mov r1,#1
-lsl r1,#21
-str r1,[r0,#16]
-
-// Set the value of register one.
-mov r1,#1
-lsl r1,#15
+pinNum .req r0
+pinFunc .req r1
+mov pinNum,#16
+mov pinFunc,#1
+bl SetGpioFunction
+.unreq pinNum
+.unreq pinFunc
 
 loop$:
 
 // Set the GPIO 47 pin on.
-str r1,[r0,#32]
+pinNum .req r0
+pinVal .req r1
+mov pinNum,#16
+mov pinVal,#1
+bl SetGpio
+.unreq pinNum
+.unreq pinVal
 
 // Wait to flash so humans can see it
 mov r2,#0x3F0000
@@ -27,7 +36,13 @@ cmp r2,#0
 bne wait1$
 
 // Set the GPIO 47 pin off.
-str r1,[r0,#44]
+pinNum .req r0
+pinVal .req r1
+mov pinNum,#16
+mov pinVal,#0
+bl SetGpio
+.unreq pinNum
+.unreq pinVal
 
 // Wait to flash so humans can see it
 mov r2,#0x3F0000
